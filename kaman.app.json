@@ -1,0 +1,53 @@
+{
+  "name": "Order-to-Cash Revenue Leakage Monitor",
+  "agents": {
+    "extractor": "2b12a373-8252-5e09-8c38-aedca330d94c",
+    "recovery_agent": "6cb71158-1680-5b0f-844e-de381bbdd9ff"
+  },
+  "workflows": {
+    "flow": "914e45a5-115b-58be-a198-205eccc9b6a5"
+  },
+  "ui": {
+    "title": "Order-to-Cash Revenue Leakage Monitor",
+    "tagline": "Finds revenue that leaks between order and cash: matches every delivery to its order and invoice in code (not by guesswork), flags unbilled deliveries, under-billing and unexplained credits, explains the root causes, and opens recovery tasks once finance agrees.",
+    "actions": [
+      {
+        "id": "run",
+        "label": "Run: Order-to-cash leakage check",
+        "description": "For a period, Kaman matches orders, deliveries and invoices line by line, finds what was delivered but not billed, billed below contract price or credited without reason, explains and ranks the leakage, and opens recovery tasks once finance agrees.",
+        "kind": "workflow",
+        "target": "flow",
+        "inputs": [
+          {
+            "name": "period",
+            "label": "Period",
+            "kind": "text",
+            "default": "2026-09"
+          },
+          {
+            "name": "company_code",
+            "label": "Company code",
+            "kind": "text",
+            "default": "1000"
+          }
+        ]
+      },
+      {
+        "id": "ask",
+        "label": "Ask the Order-to-Cash Extractor",
+        "description": "Pulls a period's sales orders, fulfilments, invoices and credit memos from NetSuite.",
+        "kind": "agent",
+        "target": "extractor",
+        "prompt": "{{question}}",
+        "inputs": [
+          {
+            "name": "question",
+            "label": "Your question",
+            "kind": "text",
+            "default": "Pull order-to-cash documents for 2026-09, company 1000."
+          }
+        ]
+      }
+    ]
+  }
+}
