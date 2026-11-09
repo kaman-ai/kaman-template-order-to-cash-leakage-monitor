@@ -1,14 +1,14 @@
 {
   "name": "Order-to-Cash Revenue Leakage Monitor",
   "agents": {
-    "extractor": "4001c5bb-4f51-5e74-ad9d-69e046171065",
-    "recovery_agent": "72919147-b964-59d3-9be7-de9ca58c946d"
+    "extractor": "408595c8-0528-57b1-ab38-da9e21d5bf66",
+    "recovery_agent": "1f12f2d9-c353-552d-b890-e8c9e069829c"
   },
   "workflows": {
-    "flow": "3c199821-3701-564d-bd5a-b7d26edc8be4"
+    "flow": "28db5dc4-ea0e-5cc6-9d2a-290da24d5259"
   },
   "scenarios": {
-    "desk": "665623c1-e7ab-505c-83a3-e9a31dc8e00c"
+    "desk": "d4299a69-50db-519a-b5f5-cadaaf96c6a0"
   },
   "ui": {
     "title": "Order-to-Cash Revenue Leakage Monitor",
@@ -18,7 +18,7 @@
       "agent": "extractor",
       "title": "Ask the Order-to-Cash Extractor",
       "suggestions": [
-        "Period 2026-09. The SalesOrd query returned [{order: SO1, line: 10, customer: C1, unit_price: 100}]. the ItemShip query returned [{order: SO1, line: 10, qty: 5}]. the CustInvc query returned []. the CustCred query returned [{number: CN9, customer: C2, amount: 300, reason_code: null}]. Reply as instructed.",
+        "Period 2026-09. These documents were read: orders [{order: SO1, line: 10, customer: C1, unit_price: 100}], deliveries [{order: SO1, line: 10, qty: 5}], invoices [], credit notes [{number: CN9, customer: C2, amount: 300, reason_code: null}]. Reply as instructed.",
         "Pull order-to-cash documents for 2026-09, company 1000."
       ]
     }
